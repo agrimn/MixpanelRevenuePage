@@ -56,6 +56,17 @@
     0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
     for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
     mixpanel.init("bd2624c3a89cd19726ca75b8604eb488");</script><!-- end Mixpanel -->
+		mixpanel.identify("13793");
+	function sendTransaction() {
+		// Tracks $100 in revenue for user 13793
+		mixpanel.people.track_charge(100);
+	}
+	function sendTransactionWithTime() {
+		mixpanel.people.track_charge(
+		    25,
+		    { '$time': "2013-01-02T21:45:00" }
+		);
+	}
     
 	</script>
 </head>
@@ -67,11 +78,8 @@
 	</div>
 	<div id="main_container"> 
 		<p> This is a test page!</p>
-		<button type="button" onclick="sendProductClick()">ProductClick</button>
-		<button type="button" onclick="sendProductClicknImpression()">ProductClickAndImpression</button>
 		<button type="button" onclick="sendTransaction()">SendTransaction</button>
-		<button type="button" onclick="sendRefunds()">sendRefund</button>
-		<button type="button" onclick="addToCart()">addToCart</button>
+		<button type="button" onclick="sendTransactionWithTime()">sendTransactionWithTime</button>
 		<hr>
 	</div>
 	<footer>
